@@ -103,8 +103,10 @@ app.get("/users/:id", function(request,response){
 
             else{
 
-
-                response.json(result[0]);
+                response.json({
+                    user: result[0],
+                    serverTime: new Date().toISOString()
+                });
 
 
             }
@@ -352,7 +354,10 @@ app.get("/api/v1/users/:id", function(request,response){
 
             else{
 
-                response.json(result[0]);
+                response.json({
+                    user: result[0],
+                    serverTime: new Date().toISOString()
+                });
 
             }
 
@@ -602,7 +607,10 @@ app.get("/orders/:id", function(request,response){
             else{
 
 
-                response.json(result[0]);
+                response.json({
+                    user: result[0],
+                    serverTime: new Date().toISOString()
+                });
 
 
             }
