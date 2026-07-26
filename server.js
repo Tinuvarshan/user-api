@@ -55,9 +55,6 @@ app.get("/users", function(request,response){
 
 
 
-
-
-
 // Get single user from MySQL
 
 app.get("/users/:id", function(request,response){
@@ -363,7 +360,7 @@ app.delete("/users/:id", function(request,response){
 });
 
 
-
+/*
 
 // API VERSION 1
 
@@ -423,7 +420,10 @@ app.get("/api/v1/users/:id", function(request,response){
 }); 
 
 
+*/
 
+
+/*
 // API VERSION 2
 
 app.get("/api/v2/users/:id", function(request,response){
@@ -501,7 +501,7 @@ app.get("/api/v2/users/:id", function(request,response){
 
 });
 
-
+*/
 
 
 // Create Order API
@@ -776,6 +776,8 @@ if (!status) {
 });
 
 
+/*
+
 // Delete Order
 
 app.delete("/orders/:id", function(request,response){
@@ -852,7 +854,7 @@ app.delete("/orders/:id", function(request,response){
 });
 
 
-
+*/
 
 
 
