@@ -66,6 +66,17 @@ app.get("/users/:id", function(request,response){
     const userId = request.params.id;
 
 
+    if (!userId || isNaN(userId) || Number(userId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid User ID is required"
+
+    });
+
+}
+
+
     const sql = "SELECT * FROM users WHERE id = ?";
 
 
@@ -131,6 +142,27 @@ app.put("/users/:id", function(request,response){
     const name = request.body.name;
 
     const email = request.body.email;
+
+
+    if (!userId || isNaN(userId) || Number(userId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid User ID is required"
+
+    });
+
+}
+
+if (!name || !email) {
+
+    return response.status(400).json({
+
+        message: "Name and Email are required"
+
+    });
+
+}
 
 
     const sql = 
@@ -203,6 +235,16 @@ app.post("/users", function(request,response){
 
     const email = request.body.email;
 
+    if (!name || !email) {
+
+    return response.status(400).json({
+
+        message: "Name and Email are required"
+
+    });
+
+}
+
 
     const sql = "INSERT INTO users(name,email) VALUES (?,?)";
 
@@ -248,6 +290,16 @@ app.delete("/users/:id", function(request,response){
 
 
     const userId = request.params.id;
+
+    if (!userId || isNaN(userId) || Number(userId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid User ID is required"
+
+    });
+
+}
 
 
     const sql = "DELETE FROM users WHERE id=?";
@@ -462,12 +514,12 @@ app.post("/orders", function(request,response){
     const amount = request.body.amount;
 
 
-    if(!customerName || !productName || !amount){
+    if (!customerName || !productName || amount == null) {
 
 
         return response.status(400).json({
 
-            message:"Required fields missing"
+            message: "Customer Name, Product Name and Amount are required"
 
         });
 
@@ -569,6 +621,16 @@ app.get("/orders/:id", function(request,response){
 
     const orderId = request.params.id;
 
+    if (!orderId || isNaN(orderId) || Number(orderId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid Order ID is required"
+
+    });
+
+}
+
 
     const sql = "SELECT * FROM orders WHERE id=?";
 
@@ -636,6 +698,27 @@ app.put("/orders/:id/status", function(request,response){
     const status = request.body.status;
 
 
+    if (!orderId || isNaN(orderId) || Number(orderId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid Order ID is required"
+
+    });
+
+}
+
+if (!status) {
+
+    return response.status(400).json({
+
+        message: "Status is required"
+
+    });
+
+}
+
+
     const sql =
     "UPDATE orders SET status=? WHERE id=?";
 
@@ -699,6 +782,17 @@ app.delete("/orders/:id", function(request,response){
 
 
     const orderId = request.params.id;
+
+
+    if (!orderId || isNaN(orderId) || Number(orderId) <= 0) {
+
+    return response.status(400).json({
+
+        message: "Valid Order ID is required"
+
+    });
+
+}
 
 
     const sql =
