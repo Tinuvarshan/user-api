@@ -360,6 +360,46 @@ app.delete("/users/:id", function(request,response){
 });
 
 
+
+
+// API VERSION 1
+
+app.get("/api/v1/users/:id", function (request, response) {
+
+    const userId = request.params.id;
+
+    const sql = "SELECT id, name, email FROM users WHERE id = ?";
+
+    db.query(sql, [userId], function (error, result) {
+
+        if (error) {
+
+            response.status(500).json({
+                message: "Database error"
+            });
+
+        } else {
+
+            if (result.length === 0) {
+
+                response.status(404).json({
+                    message: "User not found"
+                });
+
+            } else {
+
+                response.json(result[0]);
+
+            }
+
+        }
+
+    });
+
+});
+
+
+
 /*
 
 // API VERSION 1
